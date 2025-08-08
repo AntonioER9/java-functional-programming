@@ -69,5 +69,12 @@ public class Main {
 
         System.out.println("\nUnique Prices:");
         uniquePrices.forEach(System.out::println);
+
+        Map<String, Double> productMap = products.stream()
+                .collect(Collectors.toMap(ProductDto::name, ProductDto::price, (existing, replacement) -> existing));
+
+        System.out.println("\nProduct Map:");
+        productMap.forEach((name, price) -> System.out.println(name + ": $" + price));
+
     }
 }
